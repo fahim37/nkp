@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: auto;
+  overflow-y: auto;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+@layer base {
+  /* Light theme variables */
+  :root {
+    --background: 208 52% 13%;
+    --foreground: 192 46% 96%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 208 52% 13%;
+
+    --popover: 208 40% 17%;
+    --popover-foreground: 192 46% 96%;
+
+    --primary: 187 64% 66%;
+    --primary-foreground: 208 52% 13%;
+
+    --secondary: 203 38% 22%;
+    --secondary-foreground: 192 46% 96%;
+
+    --muted: 203 28% 24%;
+    --muted-foreground: 194 26% 78%;
+
+    --accent: 203 38% 22%;
+    --accent-foreground: 192 46% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 202 28% 31%;
+    --input: 202 28% 31%;
+    --ring: 187 64% 66%;
+
+    --radius: 0.5rem;
+
+    --site-bg: #102331;
+    --site-surface: #17384a;
+    --site-panel: #244e63;
+    --site-panel-strong: #2c5a71;
+    --site-accent: #6fd3df;
+    --site-accent-strong: #8ee6ef;
+    --site-border: #385c70;
+    --site-muted: #c2dbe1;
+    --site-muted-strong: #e9f4f6;
+    --site-button-bg: #eef8fa;
+    --site-button-text: #102331;
+    --site-card-bg: #f5fbfc;
+    --site-card-text: #102331;
+
+    /* Sidebar */
+    --sidebar-background: 208 52% 13%;
+    --sidebar-foreground: 192 46% 96%;
+    --sidebar-primary: 187 64% 66%;
+    --sidebar-primary-foreground: 208 52% 13%;
+    --sidebar-accent: 203 38% 22%;
+    --sidebar-accent-foreground: 192 46% 96%;
+    --sidebar-border: 202 28% 31%;
+    --sidebar-ring: 187 64% 66%;
+  }
+
+  /* Dark theme variables */
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 36 33% 44%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 35 91.7% 32.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Benedict font (added @font-face) */
+@font-face {
+  font-family: "Benedict";
+  src: url("./fonts/d85bfa7b5e2eb872c592f58f015ecdb4.woff2") format("woff2"),
+    url("./fonts/d85bfa7b5e2eb872c592f58f015ecdb4.woff") format("woff");
+  font-weight: 400, 500, 600, 700, 900, 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-benedict {
+  font-family: "Benedict" !important;
+}
+.bandit_font {
+  font-size: 40px;
+}
+.heading-size {
+  font-size: 40px;
+}
+.logo-size {
+  font-size: 38px;
+}
+.head-size {
+  font-size: 45px;
+}
+
+.ql-align-justify {
+  text-align: justify;
+}
+
+/* QuillEditor custom styles */
+.list-item {
+  @apply text-base leading-relaxed text-white;
+}
+
+.list-item ul,
+.list-item ol {
+  @apply pl-5 text-white;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.list-item ul li,
+.list-item ol li {
+  @apply mb-2 text-white;
+  position: relative;
+  text-decoration: #d00;
+}
+
+.list-item ul li::before {
+  content: "•";
+  @apply text-white;
+  position: absolute;
+  left: -1em;
+}
+
+.list-item strong {
+  color: #fff !important;
+}
+.list-item ol {
+  counter-reset: item;
+}
+
+.list-item ol li {
+  counter-increment: item;
+}
+
+.list-item ol li::before {
+  content: counter(item) ".";
+  @apply text-gray-700;
+  position: absolute;
+  left: -1em;
+}
+
+/* Heading styles for the list items */
+.list-item h1,
+.list-item h2,
+.list-item h3,
+.list-item h4,
+.list-item h5,
+.list-item h6 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: white !important;
+}
+.blogcontent {
+  color: white !important;
+}
+
+.list-item h1 {
+  @apply text-3xl;
+}
+
+.list-item h2 {
+  @apply text-2xl;
+}
+
+.list-item h3 {
+  @apply text-xl;
+}
+
+.list-item h4 {
+  @apply text-lg;
+}
+
+.list-item h5 {
+  @apply text-base;
+}
+
+.list-item h6 {
+  @apply text-sm;
+}
+
+.list-item p {
+  color: white !important;
+}
+.list-item span {
+  color: white !important;
+}
+
+/* Nested list styling */
+.list-item ul ul,
+.list-item ol ol,
+.list-item ul ol,
+.list-item ol ul {
+  @apply pl-5;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* Remove default list markers */
+.list-item ::marker {
+  display: none;
+  content: none;
+}
+
+
+
+/* Payment.css */
+.payment-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.payment-method-selector {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.payment-method-selector button {
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.payment-method-selector button.active {
+  background: #0070ba;
+  color: white;
+  border-color: #0070ba;
+}
+
+.paypal-container,
+.dropin-container {
+  /* remove spacing + decoration; let PayPal provide its own UI */
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.error-message {
+  color: #d00;
+  margin: 10px 0;
+}
+
+.payment-success {
+  text-align: center;
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 4px;
+  color: #2e7d32;
+}
+
+
+
+/* QuillEditor custom styles */
+.list-item {
+  /* This already applies a line-height, which helps with vertical spacing */
+  @apply text-base leading-relaxed text-white; 
+}
+
+/* ... (Your existing list styles for ul/ol) ... */
+
+/* Heading styles for the list items: MARGINS REMOVED */
+.list-item h1,
+.list-item h2,
+.list-item h3,
+.list-item h4,
+.list-item h5,
+.list-item h6 {
+  /* Remove all top and bottom margins for the tightest possible fit */
+  margin-top: 0 !important; 
+  margin-bottom: 0 !important; 
+  font-weight: bold;
+  color: white !important;
+}
+
+.blogcontent {
+  color: white !important;
+}
+
+.list-item h1 {
+  @apply text-3xl;
+}
+/* ... (h2, h3, h4, h5, h6 size rules remain the same) ... */
+
+/* Paragraph styling: MARGINS REMOVED */
+.list-item p {
+  /* Remove all top and bottom margins */
+  margin-top: 0 !important; 
+  margin-bottom: 0 !important;
+  color: white !important;
+}
+
+.list-item span {
+  color: white !important;
+}
+
+.list-item {
+  @apply text-base leading-tight text-white; 
+}
+
+/* ... (Rest of your existing global.css code) ... */
